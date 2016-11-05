@@ -1,7 +1,20 @@
 import xs from 'xstream';
+import io from 'socket.io-client'
 
-export function makeSocketIODriver(socket) {
+/**
+ *
+ * @param options {
+  hostname: 'securedomain.com',
+  secure: true,
+  port: 443,
+  rejectUnauthorized: false // Only necessary during debug if using a self-signed certificate
+}
+ * @returns {scDriver}
+ */
+export function makeSocketIODriver(options) {
+    const socket = io(options);
     function get(eventName, { multiArgs = false } = {}) {
+
         return xs.create({
             start(listener) {
                 this.eventListener = multiArgs
@@ -11,7 +24,7 @@ export function makeSocketIODriver(socket) {
                 socket.on(eventName, this.eventListener);
             },
             stop() {
-                socket.removeListener(eventName, this.eventListener);
+                socket.off(eventName, this.eventListener);
             },
             eventListener: null,
         });
@@ -21,18 +34,24 @@ export function makeSocketIODriver(socket) {
         socket.emit(messageType, message);
     }
 
-    return function socketIODriver(events$) {
-        if (!!events$) {
+    return function sioDriver(events$) {
+        if (events$) {
             events$.addListener({
-                next: event => publish(event.messageType, event.message),
-                error: () => {},
-                complete: () => {}
-            });
+                next: i => {
+                    if (!!i) {
+                        publish(i.messageType, i.message)
+                    }
+                },
+                error: err => console.error(err),
+                complete: () => {
+                    socket.disconnect();
+                }
+            })
         }
-
         return {
             get,
-            dispose: socket.destroy.bind(socket)
+            socket: socket,
+            dispose: () => {}
         }
     };
 }
