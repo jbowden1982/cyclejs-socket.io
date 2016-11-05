@@ -1,0 +1,39 @@
+{
+  "name": "cycle-socketcluster",
+  "version": "1.0.10",
+  "description": "",
+  "main": "dist",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "socket.io-client": "^1.5.1",
+    "xstream": "^7.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-0": "^6.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/babel src --out-dir dist",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbowden1982/cycle-socketcluster.git"
+  },
+  "keywords": [
+    "cyclejs",
+    "reactive",
+    "cycle.js",
+    "drivers"
+  ],
+  "author": "Jesse Bowden",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jbowden1982/cycle-socketcluster/issues"
+  },
+  "homepage": "https://github.com/jbowden1982/cycle-socketcluster#readme"
+}
