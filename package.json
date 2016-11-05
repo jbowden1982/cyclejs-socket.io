@@ -1,6 +1,6 @@
 {
-  "name": "cycle-socketcluster",
-  "version": "1.0.10",
+  "name": "cyclejs-socket.io",
+  "version": "1.0.0",
   "description": "",
   "main": "dist",
   "files": [
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jbowden1982/cycle-socketcluster.git"
+    "url": "git+https://github.com/jbowden1982/cyclejs-socket.io.git"
   },
   "keywords": [
     "cyclejs",
@@ -33,7 +33,7 @@
   "author": "Jesse Bowden",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jbowden1982/cycle-socketcluster/issues"
+    "url": "https://github.com/jbowden1982/cyclejs-socket.io/issues"
   },
-  "homepage": "https://github.com/jbowden1982/cycle-socketcluster#readme"
+  "homepage": "https://github.com/jbowden1982/cyclejs-socket.io#readme"
 }
