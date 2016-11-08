@@ -11,8 +11,8 @@ import io from 'socket.io-client'
 }
  * @returns {scDriver}
  */
-export function makeSocketIODriver(options) {
-    const socket = io(options);
+export function makeSocketIODriver(url, options) {
+    const socket = io(url, options);
     function get(eventName, { multiArgs = false } = {}) {
 
         return xs.create({
